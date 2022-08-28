@@ -29,6 +29,8 @@
         <li><a href="/" class="nav-link px-2 link-secondary">Home</a></li>
         <li><a href="{{ route('producto.create') }}" class="nav-link px-2 link-dark">Agregar producto</a></li>
         <li><a href="{{ route('producto.index') }}" class="nav-link px-2 link-dark">Listar productos</a></li>
+        <li><a href="{{ route('sucursal.create') }}" class="nav-link px-2 link-dark">Agregar sucursal</a></li>
+        <li><a href="{{ route('sucursal.index') }}" class="nav-link px-2 link-dark">Listar sucursal</a></li>
       </ul>
 
       <div class="col-md-3 text-end">

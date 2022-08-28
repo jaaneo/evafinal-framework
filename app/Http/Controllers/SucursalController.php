@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SucursalRequest;
 use App\Models\Sucursal;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,11 @@ class SucursalController extends Controller
      */
     public function index()
     {
-        //
+        $sucursales = Sucursal::orderByDesc('id')->get();
+       // $productos = Producto::get();
+       return view('sucursal.index', [
+        'sucursales' => $sucursales,
+      ]);
     }
 
     /**
@@ -24,7 +29,7 @@ class SucursalController extends Controller
      */
     public function create()
     {
-        //
+        return view('sucursal.create');
     }
 
     /**
@@ -33,9 +38,18 @@ class SucursalController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SucursalRequest $request)
     {
-        //
+        $sucursales = $request->validated();
+        $sucursal = new Sucursal();
+        $sucursal->codigo = $request->codigosucursal;
+        $sucursal->nombre = $request->nombresucursal;
+        $sucursal->ciudad = $request->ciudadsucursal;
+        $sucursal->encargado = $request->encargadosucursal;
+        $sucursal->telefono = $request->telsucursal;
+
+        $sucursal->save();
+        return redirect()->route('sucursales.index');
     }
 
     /**
