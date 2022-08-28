@@ -66,6 +66,7 @@
         </div>
         <div class="col-sm-3">
           <!-- Se crea solo para centrar el formulario de registro-->
+       </tbody>
         </div>
       </div>
     @stop

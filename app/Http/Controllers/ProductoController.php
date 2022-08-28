@@ -14,7 +14,12 @@ class ProductoController extends Controller
      */
     public function index()
     {
-        
+        $productos = Producto::orderByDesc('id')->get();
+       // $productos = Producto::get();
+       return view('producto.index', [
+        'productos' => $productos,
+      ]);
+    //   dd($productos);
     }
 
     /**
@@ -46,12 +51,13 @@ class ProductoController extends Controller
             $producto = new Producto();
             $producto->codigo = $request->codigo;
             $producto->nombre = $request->nombre;
-           // $producto->categoria_id = $request->categoria;
+           // $produco->categoria_id = $request->categoria;
             $producto->descripcion = $request->descripcion;
             $producto->precio = $request->precio;
 
-    $producto->save();
-    return view('/');
+            $producto->save();
+            return redirect()->route('producto.index');
+            // return view('producto.index');
     }
 
     /**
