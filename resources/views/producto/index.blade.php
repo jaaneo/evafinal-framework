@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.master_admin')
 
 @section('title', "Listado de productos")
 @section('content')
@@ -46,7 +46,7 @@
                         </td>
                         <td>
                             <a href="{{ route('producto.edit', $producto) }}" class="btn btn-warning">Editar</a>
-                            <a href="" class="btn btn-danger">Eliminar</a>
+                            <a href="{{ route('producto.show', $producto) }}" class="btn btn-primary">ver</a>
                         </td>
                      </tr>
                  @endforeach

@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.master_admin')
 
 @section('title', "Nuevo producto")
 @section('content')
@@ -18,39 +18,12 @@
           <div class="card">
             <div class="card-body">
               <form method="post" action="{{ route('producto.store') }}">
-                @csrf
-                <div class="form-floating m-2">
-                  <input type="text" class="form-control" id="codigo" name="codigo" value="{{ old('codigo') }}">
-                  <label for="codigoproducto">Código Producto</label>
-                </div>
-                <div class="form-floating m-2">
-                  <input type="text" class="form-control" id="nombre" name="nombre" value="{{ old('nombre') }}">
-                  <label for="nombreproducto">Nombre producto</label>
-                </div>
-      
-                <div class="form-floating m-2">
-      
-                  <select class="selectpicker" id="categoria" name="categoria">
-                  </select>
-      
-                </div>
-      
-      
-      
-                <div class="form-floating m-2">
-                  <input type="text" class="form-control" id="descripcion" name="descripcion" value="{{ old('descripcion') }}">
-                  <label for="descripcionproducto">Descripción</label>
-                </div>
-      
-                <div class="form-floating m-2">
-                  <input type="number" class="form-control" id="precio" name="precio" value="{{ old('precio') }}">
-                  <label for="precioventaproducto">Precio venta</label>
-                </div>
+                <x-producto-form-body :producto="$producto"/>
                 <div class="text-center">
                   <button class="w-50 btn btn-lg btn-primary" type="submit">Registrar producto</button>
-                </div>
-      
-                @if($errors->any())
+              </div>
+              </form>
+                 @if($errors->any())
                 <div class="alert alert-danger">
                   <ul>
                     @foreach($errors->all() as $error)
@@ -59,8 +32,6 @@
                   </ul>
                 </div>
                 @endif
-      
-              </form>
             </div>
           </div>
         </div>

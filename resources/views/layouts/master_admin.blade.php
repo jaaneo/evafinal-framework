@@ -27,14 +27,13 @@
 
       <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
         <li><a href="/" class="nav-link px-2 link-secondary">Home</a></li>
-        <li><a href="#" class="nav-link px-2 link-dark">Ventajas</a></li>
-        <li><a href="#" class="nav-link px-2 link-dark">Precio</a></li>
-        <li><a href="#" class="nav-link px-2 link-dark">Contacto</a></li>
+        <li><a href="{{ route('producto.create') }}" class="nav-link px-2 link-dark">Agregar producto</a></li>
+        <li><a href="{{ route('producto.index') }}" class="nav-link px-2 link-dark">Listar productos</a></li>
       </ul>
 
       <div class="col-md-3 text-end">
-        <a href="/"><button type="button" class="btn btn-outline-primary me-2 text-uppercase"">Iniciar sesión</button></a>
-        <a href="/"><button type="button" class="btn btn-primary text-uppercase">Registrarse</button></a>
+        <a href="#"><button type="button" class="btn btn-outline-primary me-2 text-uppercase"">Iniciar sesión</button></a>
+        <a href="#"><button type="button" class="btn btn-primary text-uppercase">Registrarse</button></a>
       </div>
     </header>
   </div>

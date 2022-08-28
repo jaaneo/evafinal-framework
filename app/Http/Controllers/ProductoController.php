@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProductoRequest;
 use App\Models\Producto;
 use Illuminate\Http\Request;
 
@@ -38,20 +39,13 @@ class ProductoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductoRequest $request)
     {
-        $productos = $request->validate(
-            [
-                'codigo' => 'required|min:5|max:10',
-                'nombre' => 'required|min:5|max:30',
-                'categoria' => 'nullable',
-                'descripcion' => 'required|min:5|max:100',
-                'precio' => 'required|integer' 
-            ]);
+        $productos = $request->validated();
             $producto = new Producto();
             $producto->codigo = $request->codigo;
             $producto->nombre = $request->nombre;
-           // $produco->categoria_id = $request->categoria;
+         //   $producto->categoria = $request->categoria;
             $producto->descripcion = $request->descripcion;
             $producto->precio = $request->precio;
 
@@ -68,7 +62,7 @@ class ProductoController extends Controller
      */
     public function show(Producto $producto)
     {
-        //
+        return view('producto.show', ['producto' => $producto]);
     }
 
     /**
@@ -79,7 +73,8 @@ class ProductoController extends Controller
      */
     public function edit(Producto $producto)
     {
-        //
+        //dd($producto);
+        return view('producto.edit', compact('producto'));
     }
 
     /**
@@ -89,9 +84,11 @@ class ProductoController extends Controller
      * @param  \App\Models\Producto  $producto
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Producto $producto)
+    public function update(ProductoRequest $request, Producto $producto)
     {
-        //
+        $datos = $request->validated();
+        $producto->update($datos);
+        return redirect()->route('producto.index');
     }
 
     /**
@@ -102,6 +99,7 @@ class ProductoController extends Controller
      */
     public function destroy(Producto $producto)
     {
-        //
+        $producto->delete();
+        return redirect()->route('producto.index');
     }
 }

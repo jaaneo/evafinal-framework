@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 
 class RutasController extends Controller
 {
-    public function login()
+    public function inicio()
     {
-      return view('login');
+      return view('welcome');
     }
 }
